@@ -48,7 +48,8 @@ def jsc_cb (jcbstr, arg, errnum):
     jobid = jcb['jobid']
     state = jsc.job_num2state (jcb[jsc.JSC_STATE_PAIR][jsc.JSC_STATE_PAIR_NSTATE])
     #print "flux.jsc: job", jobid, "changed its state to ", state
-    if state == "complete": 
+    if state == "complete":
+        print "Job {} completed".format(jobid)
         njobs += 1
     if njobs == N:
         f.reactor_stop (f.get_reactor ())
