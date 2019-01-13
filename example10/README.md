@@ -1,14 +1,9 @@
 ### A data conduit strategy
 
-- **salloc -N3 -ppdebug**
+- **make**
 
-- **setenv PKG_CONFIG_PATH /usr/global/tools/flux/toss_3_x86_64_ib/default/lib/pkgconfig**
-
-- make
-
-- **setenv FLUX_SCHED_OPTIONS "node-excl=true"** *# Make sure the scheduler module will do node-exclusive scheduling*
-
-- **srun --pty --mpi=none -N3 /usr/global/tools/flux/toss_3_x86_64_ib/default/bin/flux start -o,-S,log-filename=out**
+- **# Make sure the scheduler module will do node-exclusive scheduling**
+- **FLUX_SCHED_OPTIONS="node-excl=true" flux start -s3**
 
 - **flux submit -N 1 -n 1 ./datastore.py**
 

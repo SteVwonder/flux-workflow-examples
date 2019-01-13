@@ -1,12 +1,8 @@
 ### 1. Partitioning Schedule
 
 - Launch a flux instance and schedule/launch compute and io-forwarding jobs on separate nodes
-
-- **salloc -N3 -ppdebug**
-
-- **setenv FLUX_SCHED_OPTIONS "node-excl=true"** *# Make sure the scheduler module will do node-exclusive scheduling*
-
-- **srun --pty --mpi=none -N3 /usr/global/tools/flux/toss_3_x86_64_ib/default/bin/flux start -o,-S,log-filename=out**
+- **# Make sure the scheduler module will do node-exclusive scheduling**
+- **FLUX_SCHED_OPTIONS="node-excl=true" flux start -s3**
 
 - **flux submit --nnodes=2 --ntasks=4 --cores-per-task=2 ./compute.lua 120**
 
@@ -36,12 +32,7 @@
 ### 2. Overlapping Schedule
 
 - Launch a flux instance and schedule/launch both compute and io-forwarding jobs across all nodes
-
-- **salloc -N3 -ppdebug**
-
-- **unsetenv FLUX_SCHED_OPTIONS** *# Make sure the scheduler module will do core-level scheduling*
-
-- **srun --pty --mpi=none -N3 /g/g0/dahn/workspace/planner_correction/inst/bin/flux start -o,-S,log-filename=out**
+- **FLUX_SCHED_OPTIONS="node-excl=false" flux start -s3**
 
 - **flux submit --nnodes=3 --ntasks=6 --cores-per-task=2 ./compute.lua 120**
 

@@ -2,11 +2,7 @@
 
 Submit job bundles and wait until all jobs complete
 
-- **salloc -N3 -ppdebug**
-
-- **unsetenv FLUX_SCHED_OPTIONS**
-
-- **srun --pty --mpi=none -N3 /usr/global/tools/flux/toss_3_x86_64_ib/default/bin/flux start -o,-S,log-filename=out**
+- **flux start -s3**
 
 - **./bookkeeper.py 5**
 
